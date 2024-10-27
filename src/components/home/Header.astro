@@ -1,0 +1,23 @@
+---
+import ActiveOffer from "@components/ActiveOffer.astro";
+import Hamburger from "@icons/Hamburger.astro";
+import SearchIcon from "@icons/SearchIcon.astro";
+import ShopCart from "@icons/ShopCart.astro";
+import UserIcon from "@icons/UserIcon.astro";
+---
+
+<section>
+  <ActiveOffer />
+
+  <div class="flex h-16 w-full items-center justify-between [&>div]:mx-3">
+    <div class="inline-flex items-center gap-4">
+      <Hamburger class="w-5 h-4" />
+      <h1 class="text-2xl font-extrabold ">SHOP.CO</h1>
+    </div>
+    <div class="flex w-24 items-center gap-3">
+      <SearchIcon class="size-5" />
+      <ShopCart class="size-5" />
+      <UserIcon class="size-5" />
+    </div>
+  </div>
+</section>

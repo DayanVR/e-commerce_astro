@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import type { Product } from "@lib/types";
+
+const { title, productsArray } = Astro.props;
+---
+
+<section class="-mr-4 max-h-[609px] min-h-[423px] container justify-self-center">
+  <h3 class="">{title}</h3>
+  <div class="flex max-xl:mr-4 max-lg:gap-x-4 snap-x [&>div]:snap-center overflow-y-clip max-lg:overflow-x-scroll justify-self-center">
+    {
+      productsArray.map((product: Product) => (
+        <div class="mx-2 flex max-h-[408px] min-h-72 min-w-48 max-w-[295px] flex-col items-center justify-center lg:mx-3">
+          <div class="mb-2">
+            <Image
+              height={200}
+              width={198}
+              class="max-h-72 aspect-[198/200] min-w-52 max-w-72 rounded-xl bg-main object-cover"
+              src={product.thumbnail}
+              alt={product.title}
+            />
+          </div>
+          <div class="flex flex-col gap-1">
+            <h4 class="line-clamp-1 font-satochi text-base font-bold">
+              {product.title}
+            </h4>
+            <h6 class="inline font-satochi text-xs">
+              {product.rating}/<span class="inline opacity-60">5</span>
+            </h6>
+            <div class="inline-flex w-fit gap-1.5">
+              <!-- prettier-ignore -->
+              { product.discountPercentage &&
+                <h5 class="font-satochi text-xl font-bold">
+                ${ (product.price * (1 - product.discountPercentage / 100)).toFixed(2) }
+              </h5>
+              }
+              <h5 class:list={["font-satochi text-xl font-bold", { "text-black/40 line-through": product.discountPercentage }]}>${product.price}</h5>
+              <span
+                class:list={[
+                  "inline rounded-3xl px-2 py-1 font-satochi text-xs font-medium text-red-600",
+                  { "w-fit bg-red-600/10": product.discountPercentage },
+                ]}
+              >
+                -{product?.discountPercentage}%
+              </span>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+  <button class="view-all">View All</button>
+</section>

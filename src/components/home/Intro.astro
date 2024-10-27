@@ -1,0 +1,69 @@
+---
+import { Image } from "astro:assets";
+import homeImage from "@images/home/home-img.webp";
+import { CalvinKlein, Gucci, Prada, Versage, Zara } from "@lib/brands";
+---
+
+<section class="bg-[#F2F0F1] pt-9">
+  <div class="space-y-6">
+    <div class="space-y-4 px-4">
+      <h2 class="my-3 text-balance font-integral text-4xl font-bold">
+        FIND CLOTHES THAT MATCHES YOUR STYLE
+      </h2>
+      <p class="font-satochi text-sm xs:w-84">
+        Browse through our diverse range of meticulously crafted garments,
+        designed to bring out your individuality and cater to your sense of
+        style.
+      </p>
+      <button
+        class="rounded-full bg-black px-14 py-4 font-satochi font-medium text-white max-md:w-full"
+        >Shop Now
+      </button>
+      <div
+        class="mx-auto flex w-[278px] flex-wrap items-center justify-around gap-4 sm:w-fit"
+      >
+        <div class="flex items-center justify-around gap-4">
+          <div class="h-12">
+            <p class="flex h-8 w-fit items-end font-satochi text-2xl font-bold">
+              200+
+            </p>
+            <span class="h-5 font-satochi text-xs">International Brands</span>
+          </div>
+          <div class="h-14 border-x-[1px] border-black opacity-10"></div>
+          <div class="h-12">
+            <p class="flex h-8 w-fit items-end font-satochi text-2xl font-bold">
+              2,000+
+            </p>
+            <span class="h-5 font-satochi text-xs">High-Quality Products</span>
+          </div>
+        </div>
+
+        <div class="h-14 border-x-[1px] border-black opacity-10 max-md:hidden">
+        </div>
+        <div class="h-12">
+          <p class="flex h-8 w-fit items-end font-satochi text-2xl font-bold">
+            30,000+
+          </p>
+          <span class="h-5 font-satochi text-xs">Happy Customers</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <Image
+        src={homeImage}
+        alt="Intro Image"
+        class="h-[448px] w-full md:h-96 aspect-auto"
+      />
+    </div>
+  </div>
+  <div
+    class="flex h-36 w-full flex-wrap items-center justify-around bg-black py-6 md:h-28"
+  >
+    <Versage />
+    <Zara />
+    <Gucci />
+    <Prada />
+    <CalvinKlein />
+  </div>
+</section>
