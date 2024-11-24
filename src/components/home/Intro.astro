@@ -1,50 +1,68 @@
 ---
 import { Image } from "astro:assets";
 import homeImage from "@images/home/home-img.webp";
-import { CalvinKlein, Gucci, Prada, Versage, Zara } from "@lib/brands";
+import { CalvinKlein, Gucci, Prada, Versage, Zara } from "@icons/brands";
 ---
 
-<section class="bg-[#F2F0F1] pt-9">
-  <div class="space-y-6">
-    <div class="space-y-4 px-4">
-      <h2 class="my-3 text-balance font-integral text-4xl font-bold">
+<section class="bg-main max-lg:pt-9">
+  <div class="container mx-auto space-y-6 lg:flex lg:justify-evenly">
+    <div
+      class="flex flex-col space-y-4 px-4 lg:max-h-[260px] lg:max-w-[596px] xl:space-y-0"
+    >
+      <h2
+        class="my-2 text-balance font-integral text-4xl font-bold max-lg:md:text-center lg:mb-8 lg:mt-24 lg:text-6xl"
+      >
         FIND CLOTHES THAT MATCHES YOUR STYLE
       </h2>
-      <p class="font-satochi text-sm xs:w-84">
+      <p
+        class="font-satochi text-sm xs:w-84 max-lg:md:mx-auto max-lg:md:text-center lg:w-full lg:pb-8 lg:text-base"
+      >
         Browse through our diverse range of meticulously crafted garments,
         designed to bring out your individuality and cater to your sense of
         style.
       </p>
       <button
-        class="rounded-full bg-black px-14 py-4 font-satochi font-medium text-white max-md:w-full"
+        class="rounded-full bg-black px-14 py-4 font-satochi font-medium text-white max-sm:w-full sm:w-fit max-lg:md:mx-auto"
         >Shop Now
       </button>
       <div
-        class="mx-auto flex w-[278px] flex-wrap items-center justify-around gap-4 sm:w-fit"
+        class="flex w-[278px] flex-wrap items-center justify-around gap-4 max-lg:mx-auto sm:w-fit lg:pb-28 lg:pt-12"
       >
         <div class="flex items-center justify-around gap-4">
           <div class="h-12">
-            <p class="flex h-8 w-fit items-end font-satochi text-2xl font-bold">
+            <p
+              class="flex h-8 w-fit items-end font-satochi text-2xl font-bold lg:text-4xl"
+            >
               200+
             </p>
-            <span class="h-5 font-satochi text-xs">International Brands</span>
+            <span class="h-5 font-satochi text-xs lg:text-base"
+              >International Brands</span
+            >
           </div>
           <div class="h-14 border-x-[1px] border-black opacity-10"></div>
           <div class="h-12">
-            <p class="flex h-8 w-fit items-end font-satochi text-2xl font-bold">
+            <p
+              class="flex h-8 w-fit items-end font-satochi text-2xl font-bold lg:text-4xl"
+            >
               2,000+
             </p>
-            <span class="h-5 font-satochi text-xs">High-Quality Products</span>
+            <span class="h-5 font-satochi text-xs lg:text-base"
+              >High-Quality Products</span
+            >
           </div>
         </div>
 
         <div class="h-14 border-x-[1px] border-black opacity-10 max-md:hidden">
         </div>
         <div class="h-12">
-          <p class="flex h-8 w-fit items-end font-satochi text-2xl font-bold">
+          <p
+            class="flex h-8 w-fit items-end font-satochi text-2xl font-bold lg:text-4xl"
+          >
             30,000+
           </p>
-          <span class="h-5 font-satochi text-xs">Happy Customers</span>
+          <span class="h-5 font-satochi text-xs lg:text-base"
+            >Happy Customers</span
+          >
         </div>
       </div>
     </div>
@@ -53,17 +71,20 @@ import { CalvinKlein, Gucci, Prada, Versage, Zara } from "@lib/brands";
       <Image
         src={homeImage}
         alt="Intro Image"
-        class="h-[448px] w-full md:h-96 aspect-auto"
+        class="my-auto aspect-auto h-[448px] w-full md:h-96 lg:h-[608px] lg:max-w-[609px]"
       />
     </div>
   </div>
-  <div
-    class="flex h-36 w-full flex-wrap items-center justify-around bg-black py-6 md:h-28"
-  >
-    <Versage />
-    <Zara />
-    <Gucci />
-    <Prada />
-    <CalvinKlein />
+
+  <div class="bg-black">
+    <div
+      class="container mx-auto flex h-36 w-full flex-wrap items-center justify-around py-6 md:h-28"
+    >
+      <Versage />
+      <Zara />
+      <Gucci />
+      <Prada />
+      <CalvinKlein />
+    </div>
   </div>
 </section>

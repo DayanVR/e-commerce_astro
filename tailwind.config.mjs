@@ -18,7 +18,12 @@ export default {
         84: "22.375rem",
       },
       backgroundColor: {
-        main: '#F0EEED'
+        main: '#F2F0F1',
+        secondary: '#F0F0F0',
+        tertiary: '#F0EEED',
+      },
+      colors: {
+        star: '#FFC633'
       },
     },
   },

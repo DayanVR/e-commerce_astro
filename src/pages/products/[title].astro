@@ -1,0 +1,27 @@
+---
+import ProductInfo from "@components/productPage/productInfo";
+import ProductIntro from "@components/productPage/productIntro.astro";
+import Layout from "@layouts/Layout.astro";
+
+const id = new URL(Astro.url).searchParams.get("id");
+const product = await fetch(`https://dummyjson.com/products/${id}`).then(
+  (res) => res.json(),
+);
+const error = product.message;
+console.log(product);
+---
+
+<Layout title=`Products | ${product.title}`>
+  <section class="container mx-auto px-4 max-lg:pt-9">
+    {
+      error ? (
+        <h1>{error}</h1>
+      ) : (
+        <>
+          <ProductIntro product={product} />
+          <ProductInfo product={product} client:visible />
+        </>
+      )
+    }
+  </section>
+</Layout>

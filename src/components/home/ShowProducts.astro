@@ -1,51 +1,47 @@
 ---
 import { Image } from "astro:assets";
 import type { Product } from "@lib/types";
+import StarRating from "@components/StarRating.astro";
+import PriceDiscounted from "@components/PriceDiscounted.astro";
+import { truncateDecimals } from "@lib/libs";
 
 const { title, productsArray } = Astro.props;
 ---
 
-<section class="-mr-4 max-h-[609px] min-h-[423px] container justify-self-center">
-  <h3 class="">{title}</h3>
-  <div class="flex max-xl:mr-4 max-lg:gap-x-4 snap-x [&>div]:snap-center overflow-y-clip max-lg:overflow-x-scroll justify-self-center">
+<section
+  class="max-h-[609px] min-h-[423px] flex-col place-self-center max-lg:container md:mx-auto md:flex"
+>
+  <h3>{title}</h3>
+  <div
+    class="mx-auto flex snap-x overflow-y-clip max-xl:overflow-x-scroll max-lg:gap-x-4 md:max-w-2xl lg:max-w-4xl lg:gap-x-5 [&>div]:snap-center"
+  >
     {
       productsArray.map((product: Product) => (
-        <div class="mx-2 flex max-h-[408px] min-h-72 min-w-48 max-w-[295px] flex-col items-center justify-center lg:mx-3">
+        <a
+          href={`products/${product.title}?id=${product.id}`}
+          class="mx-2 flex max-h-[408px] min-h-72 min-w-48 max-w-[295px] flex-col items-center justify-center lg:mx-3"
+        >
           <div class="mb-2">
             <Image
               height={200}
               width={198}
-              class="max-h-72 aspect-[198/200] min-w-52 max-w-72 rounded-xl bg-main object-cover"
+              class="aspect-[198/200] max-h-72 min-w-52 max-w-72 rounded-xl bg-tertiary object-cover"
               src={product.thumbnail}
               alt={product.title}
             />
           </div>
-          <div class="flex flex-col gap-1">
+          <div class="flex flex-col gap-1 self-start">
             <h4 class="line-clamp-1 font-satochi text-base font-bold">
               {product.title}
             </h4>
-            <h6 class="inline font-satochi text-xs">
-              {product.rating}/<span class="inline opacity-60">5</span>
-            </h6>
-            <div class="inline-flex w-fit gap-1.5">
-              <!-- prettier-ignore -->
-              { product.discountPercentage &&
-                <h5 class="font-satochi text-xl font-bold">
-                ${ (product.price * (1 - product.discountPercentage / 100)).toFixed(2) }
-              </h5>
-              }
-              <h5 class:list={["font-satochi text-xl font-bold", { "text-black/40 line-through": product.discountPercentage }]}>${product.price}</h5>
-              <span
-                class:list={[
-                  "inline rounded-3xl px-2 py-1 font-satochi text-xs font-medium text-red-600",
-                  { "w-fit bg-red-600/10": product.discountPercentage },
-                ]}
-              >
-                -{product?.discountPercentage}%
-              </span>
+            <div class="flex flex-row items-center font-satochi text-xs">
+              <StarRating rating={product.rating} />
+              <span class="ml-2.5">{truncateDecimals(product.rating, 1)}/</span>
+              <span class="inline opacity-60">5</span>
             </div>
+            <PriceDiscounted product={product} />
           </div>
-        </div>
+        </a>
       ))
     }
   </div>

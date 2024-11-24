@@ -1,0 +1,40 @@
+---
+import type { Review } from "@lib/types";
+import { reviews } from "@lib/data";
+import CheckIcon from "@icons/CheckIcon.astro";
+import StarRating from "@components/StarRating.astro";
+---
+
+<section class="container justify-self-center px-6 pb-4 pt-10 md:pb-5">
+  <h3 class="text-start">OUR HAPPY CUSTOMERS</h3>
+  <div
+    class="mx-auto flex w-full snap-x overflow-y-clip py-6 max-2xl:overflow-x-scroll max-lg:gap-x-4 lg:gap-x-5 [&>div]:snap-center"
+  >
+    {
+      reviews.map((reviews: Review) => (
+        <div class="flex min-h-36 min-w-60 flex-col gap-3 2xl:w-full rounded-3xl border p-6 lg:px-8 lg:py-7">
+          <span>{reviews.rating}</span>
+          <StarRating rating={reviews.rating} />
+          <div class="flex items-center gap-1">
+            <h4>{reviews.reviewerName}</h4>
+            <CheckIcon class="size-4 rounded-full bg-green-600 fill-white p-1" />
+          </div>
+          <p>"{reviews.comment}"</p>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  p {
+    @apply font-satochi text-sm opacity-60;
+  }
+  h4 {
+    @apply font-satochi text-base font-bold;
+  }
+
+  img {
+    @apply min-h-48 object-fill transition group-hover:scale-110 lg:min-h-52 xl:min-h-72;
+  }
+</style>

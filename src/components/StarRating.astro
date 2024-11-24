@@ -1,0 +1,40 @@
+---
+interface Props {
+  rating: number;
+}
+
+const { rating } = Astro.props;
+
+const fullStars = Math.floor(rating);
+const halfStar = rating - fullStars >= 0.5;
+---
+
+
+<div class="flex items-center">
+  {Array.from({ length: 5 }, (_, index) => (
+    <>
+      {index < fullStars ? (
+        <svg class="size-5 fill-star" viewBox="0 0 24 24">
+          <path d="M12 17.27l5.18 3.04-1.64-5.64L21 10.24h-5.81L12 4.5l-3.19 5.74H3l4.46 4.43L5.82 20.3 12 17.27z" />
+        </svg>
+      ) : index === fullStars && halfStar ? (
+        <svg class="size-5" viewBox="0 0 24 24">
+          <defs>
+            <linearGradient id={`halfStar-${index}`}>
+              <stop offset="50%" stop-color="#FFC633" />
+              <stop offset="50%" stop-color="gray" />
+            </linearGradient>
+          </defs>
+          <path
+            fill={`url(#halfStar-${index})`}
+            d="M12 17.27l5.18 3.04-1.64-5.64L21 10.24h-5.81L12 4.5l-3.19 5.74H3l4.46 4.43L5.82 20.3 12 17.27z"
+          />
+        </svg>
+      ) : (
+        <svg class="size-5 fill-gray-300" viewBox="0 0 24 24">
+          <path d="M12 17.27l5.18 3.04-1.64-5.64L21 10.24h-5.81L12 4.5l-3.19 5.74H3l4.46 4.43L5.82 20.3 12 17.27z" />
+        </svg>
+      )}
+    </>
+  ))}
+</div>

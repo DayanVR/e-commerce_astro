@@ -1,4 +1,5 @@
 ---
+import Footer from "@components/home/Footer.astro";
 import Header from "../components/home/Header.astro";
 
 interface Props {
@@ -24,15 +25,18 @@ const { title } = Astro.props;
     <main>
       <slot />
     </main>
-    <footer>Footer</footer>
+    <Footer />
   </body>
 </html>
 <style is:global>
+  h1 {
+    @apply text-2xl font-extrabold;
+  }
   h3 {
-    @apply text-balance text-center font-integral text-3xl font-bold;
+    @apply text-balance text-center font-integral text-3xl font-bold xl:text-[40px] xl:leading-[45px];
   }
   .view-all {
-    @apply flex h-14 w-full items-center justify-center mx-auto rounded-full border border-black/10 px-4 py-2 text-center font-satochi text-sm font-medium text-black xs:w-84;
+    @apply mx-auto flex h-14 w-full items-center justify-center rounded-full border border-black/10 px-4 py-2 text-center font-satochi text-sm font-medium text-black xs:w-84;
     &:hover {
       @apply bg-black/20 transition;
     }

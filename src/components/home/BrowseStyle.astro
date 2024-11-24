@@ -6,10 +6,10 @@ import gymCloth from "@images/home/gym.webp";
 import partyCloth from "@images/home/party.webp";
 ---
 
-<section class="mb:pb-8 rounded-3xl bg-main px-6 pb-4 pt-10 container justify-self-center">
+<section class="mb:pb-8 rounded-3xl bg-secondary px-6 lg:p-16 place-self-center pb-4 pt-10 justify-self-center flex flex-col mx-auto container">
   <h3 class="text-center">BROWSE BY DRESS STYLE</h3>
   <div
-    class="min-h-min grid-cols-2 justify-self-center gap-4 md:grid md:grid-rows-2 lg:max-h-[598px] lg:grid-cols-3 lg:gap-5"
+    class="min-h-min grid-cols-2 mx-auto gap-4 md:grid md:grid-rows-2 lg:max-h-[598px] lg:pt-4 lg:max-w-7xl place-self-center lg:grid-cols-3 lg:gap-5"
   >
     <div class="group col-span-1">
       <h4>Casual</h4>
@@ -36,7 +36,7 @@ import partyCloth from "@images/home/party.webp";
   }
 
   img {
-    @apply object-fill transition group-hover:scale-110 min-h-48 lg:min-h-52 xl:min-h-72;
+    @apply float-end object-fill transition group-hover:scale-110 min-h-48 lg:min-h-52 xl:min-h-72;
   }
   section > div > div {
     @apply relative min-h-48 justify-items-center overflow-hidden rounded-2xl bg-white max-lg:max-w-96 max-md:my-4 md:max-h-52 lg:min-h-52 xl:max-h-72;

@@ -5,6 +5,7 @@ import ShowProducts from "@components/home/ShowProducts.astro";
 
 import { topRatedProducts, newArrivals } from "@lib/data";
 import BrowseStyle from "@components/home/BrowseStyle.astro";
+import HappyCustomer from "@components/home/HappyCustomer.astro";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -12,9 +13,10 @@ import BrowseStyle from "@components/home/BrowseStyle.astro";
     <Intro />
     <div class="mx-4 my-12 space-y-10 [&>section]:space-y-6">
       <ShowProducts productsArray={newArrivals} title="New Arrivals" />
-      <div class="border"></div>
+      <div class="border container mx-auto"></div>
       <ShowProducts productsArray={topRatedProducts} title="Top Selling" />
       <BrowseStyle />
+      <HappyCustomer />
     </div>
   </div>
 </Layout>

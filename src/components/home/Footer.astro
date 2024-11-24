@@ -1,0 +1,75 @@
+---
+import LatestOffers from "./LatestOffers.astro";
+import { Twitter, Instagram, Facebook, Github } from "@icons/socials";
+---
+
+<footer class="relative mx-auto mt-44 lg:mt-28 xl:mt-32 bg-secondary px-4">
+  <LatestOffers />
+  <div
+    class="container mx-auto flex w-11/12 justify-between pt-60 max-lg:flex-col md:pt-48 lg:pt-36"
+  >
+    <section class="lg:mr-10 lg:w-60 xl:mr-20">
+      <h1>SHOP.CO</h1>
+      <p class="my-4 font-satochi text-sm lg:my-5">
+        We have clothes that suits your style and which you’re proud to wear.
+        From women to men.
+      </p>
+      <div class="my-6 flex gap-3 lg:my-9">
+        <Twitter />
+        <Instagram />
+        <Facebook />
+        <Github />
+      </div>
+    </section>
+
+    <section
+      class="w-full grid-cols-2 justify-between gap-y-6 max-lg:grid md:grid-cols-4 lg:flex lg:h-36 xl:w-8/12"
+    >
+      <div>
+        <h4>Company</h4>
+        <div>
+          <h5>About</h5>
+          <h5>Features</h5>
+          <h5>Works</h5>
+          <h5>Career</h5>
+        </div>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <div>
+          <h5>Customer Support</h5>
+          <h5>Delivery Details</h5>
+          <h5>Terms & Conditions</h5>
+          <h5>Privacy Policy</h5>
+        </div>
+      </div>
+      <div>
+        <h4>Faq</h4>
+        <div>
+          <h5>Account</h5>
+          <h5>Manage Deliveries</h5>
+          <h5>Orders</h5>
+          <h5>Payment</h5>
+        </div>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <div>
+          <h5>Free eBook</h5>
+          <h5>Development Tutorial</h5>
+          <h5>How to - Blog</h5>
+          <h5>Youtube Playlist</h5>
+        </div>
+      </div>
+    </section>
+  </div>
+</footer>
+
+<style>
+  h4 {
+    @apply mb-6 font-satochi text-sm font-medium uppercase tracking-[3px] lg:mb-4 lg:text-base;
+  }
+  h5 {
+    @apply my-5 font-satochi text-sm font-normal opacity-60 lg:my-3 lg:text-base;
+  }
+</style>

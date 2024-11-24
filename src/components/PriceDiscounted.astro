@@ -1,0 +1,30 @@
+---
+const { product } = Astro.props;
+
+---
+
+<div class="inline-flex w-fit gap-1.5">
+  <!-- prettier-ignore -->
+  {
+    product.discountPercentage &&
+      Number(product.discountPercentage.toFixed(1)) >= 1.0 && (
+        <h5 class="font-satochi text-xl font-bold">
+          ${(product.price * (1 - product.discountPercentage / 100)).toFixed(2)}
+        </h5>
+      )
+  }
+  <h5 class:list={["font-satochi text-xl font-bold", { "text-black/40 line-through": Number(product.discountPercentage.toFixed(1)) >= 1.0 }]}>${product.price}</h5>
+  {
+    product.discountPercentage &&
+      Number(product.discountPercentage.toFixed(1)) >= 1.0 && (
+        <span
+          class:list={[
+            "inline rounded-3xl px-2 py-1 font-satochi text-xs font-medium text-red-600",
+            { "w-fit bg-red-600/10": product.discountPercentage },
+          ]}
+        >
+          -{product?.discountPercentage.toFixed(1)}%
+        </span>
+      )
+  }
+</div>

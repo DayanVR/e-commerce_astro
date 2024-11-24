@@ -1,4 +1,4 @@
-import type { Product, Category, ApiResponse } from "./types";
+import type { Product, Category, ApiResponse, Review } from "./types";
 
 const products: Category[] = [
   {
@@ -58,14 +58,23 @@ async function getTopRatedProducts(products: Product[]): Promise<Product[]> {
   return products.sort((a, b) => b.rating - a.rating).slice(0, 4);
 }
 
+async function getReviews(products: Product[]): Promise<Review[]> {
+  return products
+    .sort((a, b) => b.reviews[0].rating - a.reviews[0].rating)
+    .slice(0, 4)
+    .flatMap((product) => product.reviews)
+    .filter((review: Review) => review.rating === 5);
+}
+
 async function fetchAndFilterProducts(products: Category[]) {
   const allProducts = await fetchProducts(products);
 
   const newArrivals = await getNewArrivals(allProducts);
   const topRatedProducts = await getTopRatedProducts(allProducts);
+  const reviews = await getReviews(allProducts);
 
-  return { topRatedProducts, newArrivals };
+  return { topRatedProducts, newArrivals, reviews };
 }
 
-export const { topRatedProducts, newArrivals } =
+export const { topRatedProducts, newArrivals, reviews } =
   await fetchAndFilterProducts(products);
