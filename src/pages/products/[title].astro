@@ -2,13 +2,19 @@
 import ProductInfo from "@components/productPage/productInfo";
 import ProductIntro from "@components/productPage/productIntro.astro";
 import Layout from "@layouts/Layout.astro";
+import { fetchSameCategoryProducts } from "@lib/data";
+import MightLike from "@components/productPage/MightLike.astro";
 
 const id = new URL(Astro.url).searchParams.get("id");
 const product = await fetch(`https://dummyjson.com/products/${id}`).then(
   (res) => res.json(),
 );
 const error = product.message;
-console.log(product);
+const sameCategoryProducts = await fetchSameCategoryProducts(product.category);
+const filteredSameCategoryProducts = sameCategoryProducts.filter(
+  (p) => p.id !== product.id
+);
+
 ---
 
 <Layout title=`Products | ${product.title}`>
@@ -20,8 +26,15 @@ console.log(product);
         <>
           <ProductIntro product={product} />
           <ProductInfo product={product} client:visible />
+          <MightLike productsArray={filteredSameCategoryProducts} title="You Might Also Like" />
         </>
       )
     }
   </section>
 </Layout>
+
+<style is:global>
+  h1 {
+    @apply font-satochi text-lg font-bold;
+  }
+</style>

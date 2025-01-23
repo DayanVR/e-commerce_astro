@@ -1,0 +1,20 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { productsCategories } from "@lib/variables";
+import { fetchProductBySingleCategory } from "@lib/data";
+import ShowStore from "@components/shop/ShowStore.astro";
+const { slug } = Astro.params;
+const page = productsCategories.find((page) => page.slug === slug);
+const { name: title, slug: pageSlug } = page ?? { name: "", slug: "" };
+
+if (!page) {
+  return Astro.redirect("/404");
+}
+
+const singleCategoryProducts = await fetchProductBySingleCategory(pageSlug);
+
+---
+
+<Layout title=`Shop | ${title}`>
+  <ShowStore title={title} productsArray={singleCategoryProducts} />
+</Layout>

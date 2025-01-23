@@ -1,22 +1,18 @@
 ---
-import { Image } from "astro:assets";
-import type { Product } from "@lib/types";
-import StarRating from "@components/StarRating.astro";
 import PriceDiscounted from "@components/PriceDiscounted.astro";
+import StarRating from "@components/StarRating.astro";
 import { truncateDecimals } from "@lib/functions";
+import { Image } from "astro:assets";
+import Pagination from "@components/Pagination.tsx";
 
 const { title, productsArray } = Astro.props;
 ---
 
-<section
-  class="max-h-[609px] min-h-[423px] flex-col place-self-center max-lg:container md:mx-auto md:flex"
->
-  <h3>{title}</h3>
-  <div
-    class="mx-auto flex snap-x overflow-y-clip max-xl:overflow-x-scroll max-lg:gap-x-4 md:max-w-2xl lg:max-w-4xl lg:gap-x-5 [&>div]:snap-center"
-  >
+<section class="mx-auto flex flex-col max-lg:container">
+  <h3 class="text-left font-satochi text-2xl">{title}</h3>
+  <div class="mx-auto justify-center gap-x-3 gap-y-6 lg:gap-y-9">
     {
-      productsArray.map((product: Product) => (
+      productsArray.map((product: any) => (
         <a
           href={`products/${product.title}?id=${product.id}`}
           class="mx-2 flex max-h-[408px] min-h-72 min-w-48 max-w-[295px] flex-col items-center justify-center lg:mx-3"
@@ -45,5 +41,12 @@ const { title, productsArray } = Astro.props;
       ))
     }
   </div>
-  <button class="view-all">View All</button>
+  <div class="container mx-auto my-6 border"></div>
+  <Pagination />
 </section>
+
+<style>
+  section > div {
+    @apply grid grid-cols-1 md:grid-cols-3;
+  }
+</style>

@@ -4,6 +4,7 @@ import Hamburger from "@icons/Hamburger.astro";
 import SearchIcon from "@icons/SearchIcon.astro";
 import ShopCart from "@icons/ShopCart.astro";
 import UserIcon from "@icons/UserIcon.astro";
+import Dropdown from "../Dropdown.tsx";
 ---
 
 <header>
@@ -14,12 +15,12 @@ import UserIcon from "@icons/UserIcon.astro";
   >
     <div class="inline-flex items-center gap-4">
       <Hamburger class="h-4 w-5 md:hidden" />
-      <h1 class="!font-integral !text-2xl !font-extrabold">SHOP.CO</h1>
+      <a href="/" class="!font-integral !text-2xl !font-extrabold">SHOP.CO</a>
     </div>
     <div
       class="hidden w-full max-w-80 items-center gap-6 max-lg:justify-center md:flex xl:max-w-96"
     >
-      <a href="/">Shop</a>
+      <Dropdown client:load />
       <a>On Sale</a>
       <a>New Arrivals</a>
       <a>Brands</a>
@@ -32,7 +33,9 @@ import UserIcon from "@icons/UserIcon.astro";
     </div>
     <div class="flex w-24 items-center gap-3">
       <SearchIcon class="size-5 lg:hidden" />
-      <ShopCart class="size-5" />
+      <a href="/cart">
+        <ShopCart class="size-5" />
+      </a>
       <UserIcon class="size-5" />
     </div>
   </nav>

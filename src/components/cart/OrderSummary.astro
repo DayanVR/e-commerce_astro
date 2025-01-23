@@ -1,0 +1,62 @@
+---
+const { totalPrice, orderQuantity } = Astro.props;
+
+const discountPercentage = 15;
+const discountAmount = Math.round((totalPrice * discountPercentage) / 100);
+
+let deliveryFee = 5 * orderQuantity;
+if (orderQuantity >= 3) {
+  deliveryFee = 3 * orderQuantity;
+}
+let finalPrice = totalPrice - discountAmount + deliveryFee;
+---
+
+<div
+  class="container mx-auto mt-5 flex flex-col gap-4 rounded-2xl border px-3.5 py-3"
+>
+  <h3 class="text-left font-satochi text-xl font-bold">Order Summary</h3>
+  <div class="flex flex-col gap-5">
+    <div class="flex w-full flex-row justify-between">
+      <h4>Subtotal</h4>
+      <span>${totalPrice}</span>
+    </div>
+    <div class="flex w-full flex-row justify-between">
+      <h4>Discount {discountPercentage}%</h4>
+      <span class="!text-red-500">-${discountAmount}</span>
+    </div>
+    <div class="flex w-full flex-row justify-between">
+      <h4>Delivery Fee</h4>
+      <span>${deliveryFee}</span>
+    </div>
+    <span class="mx-auto w-full border"></span>
+    <div class="flex w-full flex-row items-center justify-between">
+      <h5 class="text-left font-satochi text-base">Total</h5>
+      <span class="text-xl">${finalPrice}</span>
+    </div>
+  </div>
+  <button
+    class="flex items-center justify-center gap-3 rounded-full bg-black py-4 font-satochi font-medium text-white"
+    >Go to checkout
+    <svg
+      aria-hidden="true"
+      data-prefix="far"
+      data-icon="arrow-right"
+      role="img"
+      viewBox="0 0 448 512"
+      class="size-5"
+      ><path
+        fill="currentColor"
+        d="M218.101 38.101L198.302 57.9c-4.686 4.686-4.686 12.284 0 16.971L353.432 230H12c-6.627 0-12 5.373-12 12v28c0 6.627 5.373 12 12 12h341.432l-155.13 155.13c-4.686 4.686-4.686 12.284 0 16.971l19.799 19.799c4.686 4.686 12.284 4.686 16.971 0l209.414-209.414c4.686-4.686 4.686-12.284 0-16.971L235.071 38.101c-4.686-4.687-12.284-4.687-16.97 0z"
+        class=""></path></svg
+    ></button
+  >
+</div>
+
+<style>
+  h4 {
+    @apply font-satochi text-base opacity-60;
+  }
+  span {
+    @apply font-bold text-black;
+  }
+</style>

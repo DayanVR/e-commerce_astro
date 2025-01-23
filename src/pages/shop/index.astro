@@ -1,0 +1,14 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { generalProducts } from "@lib/data";
+import ShowStore from "@components/shop/ShowStore.astro";
+
+// console.log(generalProducts);
+---
+
+<Layout title=`Shop | Home`>
+  <div>
+  </div>
+  <ShowStore title="Home" productsArray={generalProducts} />
+  
+</Layout>
