@@ -6,6 +6,8 @@ dist/
 
 # dependencies
 node_modules/
+.vscode/
+test/
 
 # logs
 npm-debug.log*
