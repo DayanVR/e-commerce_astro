@@ -8,6 +8,7 @@ dist/
 node_modules/
 .vscode/*
 test/
+.vercel/
 
 # logs
 npm-debug.log*
