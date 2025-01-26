@@ -1,13 +1,9 @@
 import { useState } from "react";
-export default function ConfigAmount({
-  stock,
-}: {
-  stock: number;
-}) {
+export default function ConfigAmount({ stock }: { stock: number }) {
   const [quantity, setQuantity] = useState(1);
 
   return (
-    <div className="flex flex-row items-center gap-4 rounded-full bg-secondary px-4 w-fit py-3">
+    <div className="flex w-fit flex-row items-center gap-4 rounded-full bg-secondary px-4 py-3">
       <button
         type="button"
         onClick={() => setQuantity(Math.max(1, quantity - 1))}
