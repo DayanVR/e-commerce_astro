@@ -14,7 +14,7 @@ const { title, productsArray } = Astro.props;
     {
       productsArray.map((product: any) => (
         <a
-          href={`products/${product.title}?id=${product.id}`}
+          href={`/products/${product.title}?id=${product.id}`}
           class="mx-2 flex max-h-[408px] min-h-72 min-w-48 max-w-[295px] flex-col items-center justify-center lg:mx-3"
         >
           <div class="mb-2">
